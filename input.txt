@@ -1,0 +1,51 @@
+# Format:
+# 	Name | ShortName | Code | Credit | Status | Day1 * Day2 * ... | Special Notice | Notes
+#
+# Notes:
+#	Status Codes: -1 -> Unknown, 0 -> Not Open to Register, 1 -> Open to Register
+#	(empty lines or the lines starting with sharp symbol will not be taken into account)
+#
+#RWTH German Course A1.1.a |GermanA| 00.00000 | 6 | 1 | Friday, 14:30-18:00 | None | None
+#RWTH German Course A1.1.b |GermanB| 00.00000 | 6 | 1 | Friday, 14:30-18:00 | None | None
+#RWTH German Course A1.1.c |GermanABC| 00.00000 | 6 | 1 | Friday, 14:30-18:00 | None | None
+#RWTH German Course A1.1.k |GermanK| 00.00000 | 6 | 1 | Monday, 14:30-16:00 * Wednesday, 14:30-16:00  | None | None
+#RWTH German Course A1.1.d |GermanDK| 00.00000 | 6 | 1 | Monday, 14:30-16:00 * Wednesday, 14:30-16:00 | None | None
+#RWTH German Course A1.1.e |GermanE| 00.00000 | 6 | 1 | Friday, 08:30-12:00 | None | None
+#RWTH German Course A1.1.g |GermanG| 00.00000 | 6 | 1 | Tuesday, 12:30-14:00 * Thursday, 12:30-14:00 | None | None
+#RWTH German Course A1.1.h |GermanH| 00.00000 | 6 | 1 | Tuesday, 16:30-18:00 * Thursday, 16:30-18:00 | None | None
+#RWTH German Course A1.1.i |GermanI| 00.00000 | 6 | 1 | Monday, 08:30-10:00 * Wednesday, 08:30-10:00  | None | None
+#RWTH German Course A1.1.j |GermanJ| 00.00000 | 6 | 1 | Tuesday, 08:30-10:00 * Thursday, 08:30-10:00  | None | None
+#RWTH German Course A1.1.l |GermanL| 00.00000 | 6 | 1 | Tuesday, 14:30-16:00 * Thursday, 14:30-16:00  | None | None
+#RWTH German Course A1.1.m |GermanM| 00.00000 | 6 | 1 | Monday, 10:30-12:00*Wednesday, 10:30-12:00  | None | None
+#RWTH German Course A1.1.n |GermanN| 00.00000 | 6 | 1 | Tuesday, 10:30-12:00 * Thursday, 10:30-12:00  | None | None
+#RWTH German Course A1.1.? |German?| 00.00000 | 6 | 1 | Tuesday, 10:30-14:00 * Thursday, 10:30-14:00  | None | None
+#
+#
+#
+# 
+Implementation of Databases							|ImplemDBs				| 12.28927 | 6 | 0 | Tuesday, 14:30 - 16:00 * Thursday, 14:30 - 16:00	| Core | None
+Software Architectures 								|SW Arch				| 12.28446 | 6 | 0 | NIL												| Core | from 08.10.18, 00:00
+
+Applied Software Engineering Automotive Electronics	|AppSWEngAuto			| 12.23900 | ? | 1 | Friday, 08:30 - 10:00 | None | None
+Advanced Internet Technology (Lecture)				|Adv.Int.Tech.			| 12.12522 | ? | 1 | Monday, 12:30 - 14:00 * Wednesday, 10:30 - 12:00 	| None | None
+
+Computational Social Sciences (lecture) 			|SocDatSci(l)			| 75.56563 | 6 | 1 | Tuesday, 10:30 - 12:00								| None | None
+Computational Social Sciences (exercise)			|SocDatSci(e)			| 75.56564 | 6 | 1 | Thursday, 10:30 - 13:15 							| None | None
+Compiler Construction								|Compiler				| 12.38290 | 6 | 0 | Monday, 12:30 - 14:00 * Thursday, 12:30 - 14:00 	| None | None
+Complexity Theory									|Comp.Theo.				| 12.49844 | 6 | 1 | Monday, 08:30 -  10:00 * Thursday, 14:30 - 16:00	| None | None
+Communication Systems Engineering					|Comm.Sys.Eng.			| 12.45207 | 6 | 0 | Monday, 08:30 - 10:00 * Wednesday, 08:30 - 10:00 * Thursday, 10:30 - 12:00 | None | from 10.10.18
+
+Graph Decompositions and Algorithmic Applications	|GraphDecomp			| 12.49789 | 6 | 1 | Monday, 16:30 - 18:00 * Thursday, 12:30 - 14:00	| None | None
+
+Infinite Computations and Games						|Inf.Comps&Games		| 12.05499 | 6 | 1 | Tuesday, 08:30 - 10:00 * Thursday, 09:30 - 10:15 	| None | None
+Introduction to Artificial Intelligence				|Intro2AI				| 12.45308 | 6 | 1 | Monday, 14:30 - 16:00 * Wednesday, 14:30 - 16:00 * Thursday, 14:30 - 16:00 | None | None
+Introduction to High-Performance Computing			|HiPerComp(l)			| 12.45645 | 6 | 1 | Tuesday, 14:30 - 16:00 * Thursday, 14:30 - 16:00	| None | None
+#Introduction to High-Performance Computing			|HiPerComp(e)			| 12.45644 | 6 | 1 | Thursday, 14:30 -16:00 							| None | None
+
+Modeling and Verification of Probabilistic Systems	|Mod.Verif.Prob.Sys		| 12.45304 | 6 | 0 | Monday, 10:30 - 12:00 * Tuesday, 08:30 - 10:00		| None | None 
+
+Logic and Games										|Logic&Games			| 11.45375 | ? | 1 | NIL												| None | None
+Privacy Enhancing Technologies for Data Science		|PrivacySci.			| 12.53583 | 4 | 0 | Tuesday, 16:30 - 18:00 * Thursday, 16:30 - 18:00  | None | None
+
+
+

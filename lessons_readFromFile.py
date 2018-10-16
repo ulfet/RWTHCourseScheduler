@@ -5,7 +5,7 @@ from prettytable import PrettyTable
 
 global_days =[ "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 global_dayDividedInHours = {
-	"08:00": [],
+	# "08:00": [],
 	"08:30": [],
 	"09:00": [],
 	"09:30": [],
@@ -28,10 +28,12 @@ global_dayDividedInHours = {
 	"18:00": [],
 }
 global_hours = [
-	"08:00", "08:30", "09:00", "09:30", "10:00",
+	# "08:00", 
+	"08:30", "09:00", "09:30", "10:00",
 	"10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30",
 	"14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00",
-	"17:30", "18:00"
+	"17:30", 
+	# "18:00"
 ]
 
 class Date:
@@ -55,7 +57,7 @@ class Lecture:
 		self.info["courseCredit"]		 = lineTupleVar[3]
 		self.info["courseStatus"]		 = lineTupleVar[4]
 		self.info["courseHours"]		 = lineTupleVar[5]
-		self.info["courseImportance"]	 = lineTupleVar[6]
+		self.info["coursePlace"]		 = lineTupleVar[6]
 		self.info["notes"]				 = lineTupleVar[7]
 		self.info["internalStatus"]		 = ""
 		self.info["timeSlots"]			 = {}
@@ -107,49 +109,66 @@ class Lecture:
 		)
 		print(self.info["timeSlots"])
 
+# function for print selection for WeeklyCalendar PrettyTable object row
+# printme() function of WeeklyCalendar
+def whatWillBePrintedFromList(listVar):
+		if listVar == []:
+			return ""
+		elif len(listVar) == 1:
+			return listVar[0]
+		else:
+			return listVar
 
-	
-		
-	def __str__(self):
-		print(courseName, courseCode, courseCredit, courseStatus, courseHours, courseImportance, notes)
-		pass
 
 class WeeklyCalendar:
 
 	def __init__(self,lectureListVar):
 		self.lectureList = lectureListVar
-		self.schedule = {}
-		for day in global_days:
-			self.schedule[day] = deepcopy(global_dayDividedInHours)
+		self.scheduleLectures = {}
+		self.schedulePlaces = {}
 
+		# create dictionary of days
+		# each day is a list of hours dictionary
+		for day in global_days:
+			self.scheduleLectures[day] 	= deepcopy(global_dayDividedInHours)
+			self.schedulePlaces[day] 	= deepcopy(global_dayDividedInHours)
+
+		# insert the lectures in schedule
 		for lec in self.lectureList:
 			lectureName = lec.info["shortCourseName"]
+			lecturePlace = lec.info["coursePlace"]
 			for day in lec.info["timeSlots"]:
 				for time in lec.info["timeSlots"][day]:
-					self.schedule[day][time].append(lectureName)
+					self.scheduleLectures[day][time].append(lectureName)
+					self.schedulePlaces[day][time].append(lecturePlace)
 
 
 
 	def printme(self):
 		t = PrettyTable(["Time"] + global_days)
 		# t.add_row(['Alice', 24, 1,2,3,4])
+		emptyRow = ["-----"] +  ["-----------------------"] * len(global_days)
 
 		for hour in global_hours:
-			newRow = [hour]
+
+			newRowForHour = [hour]
 			for day in global_days:
-				lecturesThisTimeThisDay = self.schedule[day][hour]
-				newRow.append(lecturesThisTimeThisDay)
-			t.add_row(newRow)
+				lecturesThisTimeThisDay = self.scheduleLectures[day][hour]
+				whatToPrint = whatWillBePrintedFromList(lecturesThisTimeThisDay)
+				newRowForHour.append(whatToPrint)
+				
+			nextHour = minutesToClock( (clockToMinute(hour) + 30) )
+			newRowForPlace = [nextHour]
+			for day in global_days:
+				placeThisTimeThisDay = self.schedulePlaces[day][hour]
+				whatToPrint = whatWillBePrintedFromList(placeThisTimeThisDay)
+				newRowForPlace.append(whatToPrint)
+			
+			t.add_row(newRowForHour)
+			t.add_row(newRowForPlace)
+			t.add_row(emptyRow)
 		print(t)
 
-
-		
-		# for day in global_days:
-		# 	print(day)
-		# 	for hour in self.schedule[day]:
-		# 		if self.schedule[day][hour] != []:
-		# 			print("\t ", hour, self.schedule[day][hour])
-		# 	print(" ")
 
 
 
@@ -158,12 +177,12 @@ def lineParser(lineVar):
 	strippedLine = re.sub(r"[\n\t]*", "", lineVar)
 	splittedLine = strippedLine.split("|")
 	name 		= splittedLine[0]
-	shortName 	= splittedLine[1]
+	shortName 	= splittedLine[1].strip(" ")
 	code 		= splittedLine[2].strip(" ")
 	credit 		= splittedLine[3].strip(" ")
 	status 		= re.sub(r"[\s]*", "", splittedLine[4])
 	days		= splittedLine[5].strip(" ")
-	importance 	= splittedLine[6]
+	importance 	= splittedLine[6].strip(" ")
 	notes 		= splittedLine[7]
 	return (name, shortName, code, credit, status, days, importance, notes)
 

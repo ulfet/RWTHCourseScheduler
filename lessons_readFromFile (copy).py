@@ -27,6 +27,7 @@ global_dayDividedInHours = {
 	"16:30": [],
 	"17:00": [],
 	"17:30": [],
+	"18:00": [],
 }
 
 # if 30 minute intervals are used, follow this global hours and 
@@ -40,7 +41,17 @@ global_hours = [
 	# "18:00"
 ]
 
-# else use this one and
+# else use this one and comment the above
+# timeInterval = 90
+# global_hours = [
+# 	# "08:00", 
+# 	"08:30", "10:00",
+# 	"11:00", "12:30", "13:00", 
+# 	"14:30", "16:00", 
+# 	"16:30", "18:00"
+# 	# "18:00"
+# ]
+
 class Date:
 	day = ""
 	hourStart = ""
@@ -154,25 +165,33 @@ class WeeklyCalendar:
 		# t.add_row(['Alice', 24, 1,2,3,4])
 		emptyRow = ["-----"] +  ["-----------------------"] * len(global_days)
 
+		hIndex = 0
 		for hour in global_hours:
 
 			newRowForHour = [hour]
 			for day in global_days:
 				lecturesThisTimeThisDay = self.scheduleLectures[day][hour]
 				whatToPrint = whatWillBePrintedFromList(lecturesThisTimeThisDay)
-				newRowForHour.append(whatToPrint)
+				if hIndex in [1,5,8,13,17]:
+					newRowForHour.append(whatToPrint)
+				else:
+					newRowForHour.append('')
 				
-			nextHour = minutesToClock( (clockToMinute(hour) + 30) )
+			nextHour = minutesToClock( (clockToMinute(hour) + timeInterval) )
 			newRowForPlace = [nextHour]
 			for day in global_days:
 				placeThisTimeThisDay = self.schedulePlaces[day][hour]
 				whatToPrint = whatWillBePrintedFromList(placeThisTimeThisDay)
-				newRowForPlace.append(whatToPrint)
+				if hIndex in [1,5,8,13,17]:
+					newRowForPlace.append(whatToPrint)
+				else:
+					newRowForPlace.append('')
 			
 			t.add_row(newRowForHour)
 			t.add_row(newRowForPlace)
-			if hour != global_hours[-1]:
+			if hIndex not in [0,1,4,5,8,9,12,13,16,17,18]:
 				t.add_row(emptyRow)
+			hIndex += 1
 		print(t)
 
 
